@@ -10,10 +10,11 @@ let index = (req, res) => {
 
 let getCash = [
 
+    //validate 'amount' filed
     body('amount').trim()
-    .exists().withMessage('Amount is required')
-    .isInt({allow_leading_zeroes: false}).withMessage('Leading zeroes are not allowed')
-    .isInt({min: 1}).withMessage('Amount must be positive number'),
+    .exists().withMessage('Amount is required.')
+    .isInt({allow_leading_zeroes: false}).withMessage('Leading zeroes are not allowed.')
+    .isInt({min: 1}).withMessage('Amount must be positive number.'),
 
     // sanitize (trim and escape) the amount field and convert it to integer
     sanitizeBody('amount').trim().escape().toInt(),

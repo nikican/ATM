@@ -4,7 +4,7 @@ const arrayUtil = require('../util/array_util.js');
 let ATMCash = [{
         value: 1000,
         type: "note",
-        size: 66.3,
+        size: 66.3, //height of 1 US dollar bill
         amount: 10
     },
     {

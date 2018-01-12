@@ -1,13 +1,12 @@
 const getCash = (amount, cashData, errorFunction, successFunction) => {
     let resultCash = [];
     let calculatedAmount = amount;
-
-    // ensure that larger notes/coins are used first by sorting
-    cashData.sort((a, b) => b.value - a.value)
+    
+    cashData.sort((a, b) => b.value - a.value) // ensure that larger notes/coins are used first
         .forEach((cashUnit) => {
             let quotient = Math.floor(calculatedAmount / cashUnit.value);
 
-            // amount is too small to be given in value or there are no notes/coins left
+            // amount is too small for value or there are no notes/coins left
             if (quotient === 0 || cashUnit.amount === 0) {
                 return;
             }
