@@ -1,0 +1,23 @@
+<% include ./partials/header%>
+<div class="container">
+    <div class="row">
+        <div style="width:50%; margin:40px auto">
+            <div class="thumbnail">
+                <% if(amount){ %>
+                <div class="caption">
+                    <h2>Withdrawn: <%= amount %></h2>
+                </div>
+                <% } %>
+                <% Object.keys(slots).forEach(function(slotKey){ %>
+                    <% if(slots[slotKey] && slots[slotKey].length>0){ %>
+                    <div class="caption">
+                        <h4><%= slots[slotKey] %></h4>
+                    </div>
+                    <% } %>
+                <% }); %>
+            </div>
+            <a href="/">Go back</a>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer %>

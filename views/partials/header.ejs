@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coinify</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/stylesheets/main.css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Coinify</a>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <% if(successMessage && successMessage.length>0){ %>
+            <div class="alert alert-success" role="alert">
+               <%= successMessage %>
+            </div>
+            <% } %>
+            
+            <%if(errorMessage && errorMessage.length>0){ %>
+            <div class="alert alert-danger" role="alert">
+               <%= errorMessage %>
+            </div>
+            <% } %>
+        </div>
+        
+
