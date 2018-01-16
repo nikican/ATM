@@ -1,7 +1,7 @@
 const getCash = (amount, cashData, errorFunction, successFunction) => {
     let resultCash = [];
     let calculatedAmount = amount;
-    
+
     cashData.sort((a, b) => b.value - a.value) // ensure that larger notes/coins are used first
         .forEach((cashUnit) => {
             let quotient = Math.floor(calculatedAmount / cashUnit.value);

@@ -1,10 +1,11 @@
 const arrayUtil = require('../util/array_util.js');
 
 //mock data
-let ATMCash = [{
+let ATMCash = [
+    {
         value: 1000,
         type: "note",
-        size: 66.3, //height of 1 US dollar bill
+        size: 66.3, //height of 1 US Dollar bill
         amount: 10
     },
     {

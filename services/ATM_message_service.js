@@ -5,19 +5,19 @@ const createValidationErrorMessage = (errors) =>
         msg: errorMessage.msg + "; " + error.msg
     }));
 
-const createOutputMessage = (cashUnit, message) =>  message + cashUnit.value + " x" + cashUnit.amount + " | ";
+const createOutputMessage = (cashUnit, message) => message + cashUnit.value + " x" + cashUnit.amount + " | ";
 
 const createOutputSlotsMessages = (resultCash) => {
-    let slotOutput={};
+    let slotOutput = {};
 
-    resultCash.forEach((cashUnit)=>{
+    resultCash.forEach((cashUnit) => {
         let unitDistributed = false;
 
-        ATMSettings.ATMSlots.forEach((slot, i)=>{
-            if(!unitDistributed && cashUnit.type === slot.cashType && cashUnit.size <= slot.maxSize){
-                let slotMessage = slotOutput["slot"+(i+1)] || "| ";
-                slotOutput["slot"+(i+1)] = createOutputMessage(cashUnit, slotMessage);
-               
+        ATMSettings.getATMSlots().forEach((slot, i) => {
+            if (!unitDistributed && cashUnit.type === slot.cashType && cashUnit.size <= slot.maxSize) {
+                let slotMessage = slotOutput["slot" + (i + 1)] || "| ";
+                slotOutput["slot" + (i + 1)] = createOutputMessage(cashUnit, slotMessage);
+
                 unitDistributed = true;
             }
         });
