@@ -15,8 +15,7 @@
     "ejs": "^2.5.5",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
-    "express-validator": "^4.3.0",
-    "method-override": "^2.3.10"
+    "express-validator": "^4.3.0"
   },
   "engines": {
     "node": ">=7.10.0"

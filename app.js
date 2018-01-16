@@ -1,6 +1,5 @@
 let express = require("express");
 let bodyParser = require("body-parser");
-let methodOverride = require("method-override");
 let flash = require("connect-flash");
 let expressSession = require("express-session");
 let routes = require("./routes");
@@ -14,7 +13,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.static(__dirname + "/public"));
-app.use(methodOverride("_method"));
 app.use(flash());
 app.use(expressValidator());
 
