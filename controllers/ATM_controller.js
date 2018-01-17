@@ -29,21 +29,28 @@ let getCash = [
             req.flash("error", ATMMessageService.createValidationErrorMessage(errors).msg);
             res.redirect("back");
         } else {
-            ATMCashService.getCash(req.body.amount, ATMapi.getATMCash(),
+            ATMapi.getATMCash(
                 ({ error }) => {
                     req.flash("error", error);
                     res.redirect("back");
                 },
-                ({ resultCash, cashData }) => {
-                    ATMapi.setATMCash(cashData);
-
-                    // template model
-                    let outputViewObject = {
-                        amount: req.body.amount,
-                        slots: ATMMessageService.createOutputSlotsMessages(resultCash)
-                    }
-
-                    res.render("output", outputViewObject);
+                ({ ATMCash }) => {
+                    ATMCashService.getCash(req.body.amount, ATMCash, 
+                        ({ error }) => {
+                        req.flash("error", error);
+                        res.redirect("back");
+                    },
+                    ({ resultCash, cashData }) => {
+                        ATMapi.setATMCash(cashData);
+    
+                        // template model
+                        let outputViewObject = {
+                            amount: req.body.amount,
+                            slots: ATMMessageService.createOutputSlotsMessages(resultCash)
+                        }
+    
+                        res.render("output", outputViewObject);
+                    })
                 }
             );
         }

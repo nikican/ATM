@@ -1,8 +1,7 @@
 const arrayUtil = require('../util/array_util.js');
 
 //mock data
-let ATMCash = [
-    {
+let ATMCash = [{
         value: 1000,
         type: "note",
         size: 66.3, //height of 1 US Dollar bill
@@ -64,9 +63,18 @@ let ATMCash = [
     }
 ]
 
-const getATMCash = () => arrayUtil.clone(ATMCash);
+const getATMCash = (errorFunction, successFunction) => {
+
+    if (mockFetchSuccess()) {
+        successFunction({ATMCash: arrayUtil.clone(ATMCash)});
+    }else {
+        errorFunction({error: "Fetch failed!"});
+    }
+}
 
 const setATMCash = (newATMCash) => ATMCash = newATMCash;
+
+const mockFetchSuccess = () => true; // mock happy path
 
 module.exports = {
     getATMCash,
